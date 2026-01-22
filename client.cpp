@@ -6,7 +6,6 @@
 using namespace std;
 
 int main(){
-
     //first initializing
     WSADATA wsa;
     int start = WSAStartup(MAKEWORD(2,2), &wsa);
@@ -20,7 +19,11 @@ int main(){
         cout << "Invalid Socket\n";
         return 1;
     }
-    //creating IPv4 socket 
+    //creating IPv4 socket address
+    sockaddr_in addr{}; //zero-initialize address
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(2022);
+    addr.sin_addr = 
 
     //close and clean
     closesocket(sock);
