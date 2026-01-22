@@ -9,16 +9,24 @@ int main(){
 
     //first initializing
     WSADATA wsa;
-    int node = WSAStartup(MAKEWORD(2,2), &wsa);
-
+    int start = WSAStartup(MAKEWORD(2,2), &wsa);
+    if (start != 0){
+        cout << "WSAStartup failed: " << start << "\n";
+        return 1;
+    }
     //set socket
     SOCKET sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+    if (sock == INVALID_SOCKET){
+        cout << "Invalid Socket\n";
+        return 1;
+    }
+    //creating IPv4 socket 
 
-    
-    //close socket
+    //close and clean
     closesocket(sock);
-    //cleanup
     WSACleanup();
+
+    return 0;
 }
 
 
