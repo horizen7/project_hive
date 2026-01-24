@@ -45,9 +45,28 @@ int main(){
     while (true) {
         sockaddr_in from{}; //receiving socket
         int fromLen = sizeof(from);
+        //returns the number of bytes received, or SOCKET_ERROR if an error occurred, leaves an ectra byte to add end of string cahracter
         int n = recvfrom(sock, buf, (int)sizeof(buf) - 1, 0, (sockaddr*)&from, &fromLen); // reads data from a socket; maybe (int)sizeof... is a type of casting
 
-
+        if (n == SOCKET_ERROR){
+            std::cerr << "recvfrom failed: " << WSAGetLastError() << "\n";
+            closesocket(sock);
+            WSACleanup();
+            return 1;
+        }
+        buf[n] = '\0'; //end of string in c 
+        char ip[INET_ADDRSTRLEN]{}; //char array to hold the ip address
+        // converts the ips from binary to string
+        // AF_INET = tells the function to interpret the following as an ipv4 address
+        // &from.sin_addr points to the binary  IPv4 address
+        // ip is the output buffer where the string is going to be written
+        // sizeof(ip) tells function how big the buffer is to aoid overflow
+    
+        
+        inet_ntop(AF_INET, &from.sin_addr, ip, sizeof(ip));
+        //ntohs = network to host, short (16 bit)
+        int port = ntohs(from.sin_port);
+        std::cout << "Received " << n << " bytes from " << ip << ":" << port << ": " << buf << "\n";    
     }
 
 
