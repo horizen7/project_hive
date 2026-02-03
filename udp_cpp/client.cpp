@@ -23,12 +23,11 @@ int main(){
     sockaddr_in addr{}; //zero-initialize address
     addr.sin_family = AF_INET;
     addr.sin_port = htons(2022);
-    addr.sin_addr = 
+    addr.sin_addr.
 
     //close and clean
     closesocket(sock);
     WSACleanup();
-
     return 0;
 }
 
