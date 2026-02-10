@@ -1,0 +1,11 @@
+## JSON Formatting ##
+
+{
+    "type": 
+    "node_id":  
+    "ip_addess": 
+    "port": 
+    "x_pos": 
+    "y_pos": 
+}
+
