@@ -73,6 +73,10 @@ WALLS = {(1, 1), (1, 2), (1, 3), (2, 3), (3, 3), (4, 3), (4, 2),
 # Run the algorithm
 PATH = a_star_grid(START, GOAL, WALLS, WIDTH, HEIGHT)
 
+
+
+
+
 # --- 3. VISUALIZE WITH MATPLOTLIB ---
 # Create an empty grid filled with 0s (0 = empty space)
 grid = np.zeros((HEIGHT, WIDTH))
