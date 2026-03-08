@@ -52,7 +52,7 @@ def a_star(graph, start, goal, heuristics):
                 heapq.heappush(open_set, (f_cost, neighbor))
                 print(f"  Added/Updated neighbor {neighbor} with f-cost {f_cost}")
 
-        #when would None return? If there is not viable path?         
+    #when would None return? If there is not viable path?         
     return None
 
 
